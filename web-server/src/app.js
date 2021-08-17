@@ -28,7 +28,7 @@ app.get("/about", (req, res) => {
 app.get("/help", (req, res) => {
   res.render("help", {
     title: "Help",
-    message: "Hellppppppppppp",
+    message: "Its a Something helpful",
     name: "Sanchit Bhadgal",
   });
 });
