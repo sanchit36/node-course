@@ -2,17 +2,16 @@ const request = require("request");
 
 const forecast = (latitude, longitude, callback) => {
   const url = `http://api.weatherstack.com/current?access_key=e33c64b777c1992ec2099d5455732e88&query=${latitude},${longitude}&units=m`;
-  request.get({ url: url, json: true }, (error, response) => {
+  request.get({ url, json: true }, (error, { body }) => {
     if (error) {
       callback("Unable to connect to weather services!", data);
-    } else if (response.body.error) {
-      console.log(response.body);
+    } else if (body.error) {
       callback("Unable to find the location!", undefined);
     } else {
-      const data = response.body.current;
+      const { weather_descriptions, temperature, feelslike } = body.current;
       callback(
         undefined,
-        `${data.weather_descriptions[0]}. It is currently ${data.temperature} degree out, it feels like ${data.feelslike} degree out.`
+        `${weather_descriptions[0]}. It is currently ${temperature} degree out, it feels like ${feelslike} degree out.`
       );
     }
   });
