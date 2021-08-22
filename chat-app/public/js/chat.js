@@ -1,10 +1,17 @@
 const socket = io();
 
-socket.on("countUpdated", (count) => {
-  console.log("The count has been updated", count);
+socket.on("message", (message) => {
+  console.log(message);
 });
 
-document.getElementById("increment").addEventListener("click", () => {
-  console.log("clicked");
-  socket.emit("increment");
+const formElement = document.getElementById("message-form");
+
+formElement.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const inputElement = event.target.elements.message;
+  const message = inputElement.value;
+  if (!message) return;
+
+  socket.emit("sendMessage", message);
+  inputElement.value = "";
 });
