@@ -2,7 +2,10 @@
 // socket.emit -> send to single client
 // io.emit -> send to every client
 // socket.broadcast.emit -> send to every client except the one emitting
+// socket.join -> join a specific room
 
+// socket.emit, io.emit, socket.broadcast.emit
+// io.to.emit, socket.broadcast.to.emit
 
 // Send data from server to client
 // server side
