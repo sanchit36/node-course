@@ -1,0 +1,10 @@
+// Send data from server to client
+// server side
+socket.emit('countUpdated', dataToPass ) // to send a event
+// client side
+socket.on('countUpdated', (dataToPass) => {})
+
+// Send data from client to server is vica versa
+
+// socket.emit -> send to single client
+// io.emit -> send to every client
