@@ -19,3 +19,12 @@ socket.on('countUpdated', (dataToPass) => {})
 
 server (emit) -> client (recieve) --acknowledgement --> server
 client (emit) -> server (recieve) --acknowledgement --> client
+
+
+// TODOS
+
+// change the css
+// Username Validation for length and Admin
+// Bad Word library
+// Show a list of Rooms on Join page
+// Show error message on Join page
