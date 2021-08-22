@@ -1,3 +1,9 @@
+// About methods
+// socket.emit -> send to single client
+// io.emit -> send to every client
+// socket.broadcast.emit -> send to every client except the one emitting
+
+
 // Send data from server to client
 // server side
 socket.emit('countUpdated', dataToPass ) // to send a event
@@ -6,5 +12,7 @@ socket.on('countUpdated', (dataToPass) => {})
 
 // Send data from client to server is vica versa
 
-// socket.emit -> send to single client
-// io.emit -> send to every client
+// Event Acknowledgement
+
+server (emit) -> client (recieve) --acknowledgement --> server
+client (emit) -> server (recieve) --acknowledgement --> client
