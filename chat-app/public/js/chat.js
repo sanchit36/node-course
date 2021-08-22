@@ -12,6 +12,7 @@ const messageTemplate = document.getElementById("message-template").innerHTML;
 const locationUrlTemplate = document.getElementById(
   "location-url-template"
 ).innerHTML;
+const sidebarTemplate = document.getElementById("sidebar-template").innerHTML;
 
 // Options
 const { username, room } = Qs.parse(location.search, {
@@ -34,6 +35,14 @@ socket.on("locationMessage", (message) => {
     createdAt: moment(message.createdAt).format("h:mm a"),
   });
   $messages.insertAdjacentHTML("beforeend", html);
+});
+
+socket.on("roomData", ({ room, users }) => {
+  const html = Mustache.render(sidebarTemplate, {
+    room,
+    users,
+  });
+  document.getElementById("sidebar").innerHTML = html;
 });
 
 $messageForm.addEventListener("submit", (event) => {
